@@ -5,7 +5,6 @@ var oura = require('oura'),
 var accessToken = 'YOUR_ACCESS_TOKEN'
 
 var client = new oura.Client(accessToken)
-// console.log(client)
 client.personalInfo().then(function (user) {
   console.log(JSON.stringify(user, null, 1))
 }).catch(function(error){
