@@ -17,7 +17,7 @@
   "author": "Samuel Rinnetmäki",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/samuelmr/neurio.git"
+    "url": "git+ssh://git@github.com/samuelmr/oura.git"
   },
   "license": "MIT",
   "dependencies": {
@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/samuelmr/neurio/issues"
   },
-  "homepage": "https://github.com/samuelmr/neurio#readme",
+  "homepage": "https://github.com/samuelmr/oura#readme",
   "directories": {
     "test": "test"
   }
