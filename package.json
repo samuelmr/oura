@@ -1,0 +1,40 @@
+{
+  "name": "oura",
+  "version": "0.1.0",
+  "description": "ŌURA Cloud API client",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "keywords": [
+    "oura",
+    "api",
+    "sleep",
+    "activity",
+    "readiness",
+    "self tracking"
+  ],
+  "author": "Samuel Rinnetmäki",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/samuelmr/neurio.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "client-oauth2": "^3.2.0",
+    "lodash": "^3.6.0",
+    "request-promise": "^0.4.1"
+  },
+  "devDependencies": {
+    "nock": "^1.5.0",
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4"
+  },
+  "bugs": {
+    "url": "https://github.com/samuelmr/neurio/issues"
+  },
+  "homepage": "https://github.com/samuelmr/neurio#readme",
+  "directories": {
+    "test": "test"
+  }
+}

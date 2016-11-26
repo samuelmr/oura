@@ -1,0 +1,6 @@
+node_modules
+test
+samples
+.gitignore
+.travis.yml
+.editorconfig
