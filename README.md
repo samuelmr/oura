@@ -22,24 +22,21 @@ Unofficial [ŌURA](https://ouraring.com/) cloud [API](https://api.ouraring.com/d
 npm install oura
 ```
 
-### Daily sleep summary
+### Personal info
 
 ```js
 
-var auth = require('oura').Auth
-moment = require('moment')
+var oura = require('oura'),
+  moment = require('moment')
 
-var clientId = 'YOUR_CLIENT_ID'
-var clientSecret = 'YOUR_CLIENT_SECRET'
+// assume you have already gotten an OAuth2 access token
+var accessToken = 'YOUR_ACCESS_TOKEN'
 
-var dateFormat = 'YYYY-DD-MM'
-var start = moment().subtract(1, 'days').format(dateFormat)
-var end = moment().format(dateFormat)
-
-auth.authenticate(clientId, clientSecret, scopes).then(function (client) {
-  client.sleep(start, end).then(function (sleep) {
-    console.log(sleep)
-  })
+var client = new oura.Client(accessToken)
+client.personalInfo().then(function (user) {
+  console.log(JSON.stringify(user, null, 1))
+}).catch(function(error){
+  console.error(error)
 })
 
 ```
