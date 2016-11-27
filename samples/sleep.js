@@ -1,3 +1,14 @@
+/*
+
+Fetch your own last week's sleep data.
+
+Starts an Express server to handle authorization flow.
+Displays the authorization URL in the console log. (Copy to your browser.)
+
+Dumps the sleep data as JSON into your broser after authorization.
+
+Uses token authorization flow.
+*/
 var oura = require('oura'),
   moment = require('moment'),
   express = require('express'),
@@ -19,17 +30,14 @@ var authClient = oura.Auth(options)
 var authUri = authClient.token.getUri()
 
 var defaultUrl = url.parse(options.redirectUri)
-var express = require('express')
 var app = express()
 var port = process.env.PORT || defaultUrl.port
-var server
 
 app.get(defaultUrl.pathname, function (req, res) {
   var token = req.query['access_token']
   var client = new oura.Client(token)
   client.sleep(start, end).then(function (sleep) {
-    console.log(JSON.stringify(sleep, null, 1))
-    res.json(sleep)
+    res.send('<pre>' + JSON.stringify(sleep, null, 1) + '</pre>')
     process.exit()
   }).catch(function(error){
     console.error(error)
