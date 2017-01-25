@@ -26,8 +26,7 @@ npm install oura
 
 ```js
 
-var oura = require('oura'),
-  moment = require('moment')
+var oura = require('oura')
 
 // assume you have already gotten an OAuth2 access token
 var accessToken = 'YOUR_ACCESS_TOKEN'

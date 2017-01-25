@@ -21,7 +21,7 @@ var options = {
 }
 
 // Using a simple global value in this example.
-// Should be stored somethere permanently!
+// Should be stored somewhere permanently!
 var authConfig;
 
 var dateFormat = 'YYYY-MM-DD'
