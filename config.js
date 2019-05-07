@@ -1,5 +1,5 @@
-var authUrl = 'https://api.ouraring.com/oauth'
-var baseUrl = 'https://api.ouraring.com/v1'
+const authUrl = 'https://api.ouraring.com/oauth'
+const baseUrl = 'https://api.ouraring.com/v1'
 module.exports = {
   authUrl: authUrl,
   baseUrl: baseUrl,

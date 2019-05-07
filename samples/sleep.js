@@ -9,33 +9,33 @@ Dumps the sleep data as JSON into your broser after authorization.
 
 Uses token authorization flow.
 */
-var oura = require('oura'),
-  moment = require('moment'),
-  express = require('express'),
-  url = require('url')
+const oura = require('oura')
+const moment = require('moment')
+const express = require('express')
+const url = require('url')
 
 // these must match the info at
 // https://api.ouraring.com/oauth/applications
-var options = {
+let options = {
   clientId: 'YOUR_CLIENT_ID',
   clientSecret: 'YOUR_CLIENT_SECRET',
   redirectUri: 'http://localhost:6872/authcallback'
 }
 
-var dateFormat = 'YYYY-MM-DD'
-var start = moment().subtract(7, 'days').format(dateFormat)
-var end = moment().format(dateFormat)
+let dateFormat = 'YYYY-MM-DD'
+let start = moment().subtract(7, 'days').format(dateFormat)
+let end = moment().format(dateFormat)
 
-var authClient = oura.Auth(options)
-var authUri = authClient.token.getUri()
+let authClient = oura.Auth(options)
+let authUri = authClient.token.getUri()
 
-var defaultUrl = url.parse(options.redirectUri)
-var app = express()
-var port = process.env.PORT || defaultUrl.port
+let defaultUrl = url.parse(options.redirectUri)
+let app = express()
+let port = process.env.PORT || defaultUrl.port
 
 app.get(defaultUrl.pathname, function (req, res) {
-  var token = req.query['access_token']
-  var client = new oura.Client(token)
+  let token = req.query['access_token']
+  let client = new oura.Client(token)
   client.sleep(start, end).then(function (sleep) {
     res.send('<pre>' + JSON.stringify(sleep, null, 1) + '</pre>')
     process.exit()

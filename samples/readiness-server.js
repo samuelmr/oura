@@ -7,14 +7,14 @@ Uses code authorization flow.
 
 */
 
-var oura = require('oura'),
-  moment = require('moment'),
-  express = require('express'),
-  url = require('url')
+const oura = require('oura')
+const moment = require('moment')
+const express = require('express')
+const url = require('url')
 
 // these must match the info at
 // https://api.ouraring.com/oauth/applications
-var options = {
+let options = {
   clientId: 'YOUR_CLIENT_ID',
   clientSecret: 'YOUR_CLIENT_SECRET',
   redirectUri: 'http://localhost:6872/authcallback'
@@ -22,23 +22,23 @@ var options = {
 
 // Using a simple global value in this example.
 // Should be stored somewhere permanently!
-var authConfig;
+let authConfig;
 
-var dateFormat = 'YYYY-MM-DD'
-var start = moment().subtract(7, 'days').format(dateFormat)
-var end = moment().format(dateFormat)
+let dateFormat = 'YYYY-MM-DD'
+let start = moment().subtract(7, 'days').format(dateFormat)
+let end = moment().format(dateFormat)
 
-var redirect = url.parse(options.redirectUri);
-var app = express();
-var port = process.env.PORT || redirect.port;
-var host = redirect.host;
-var proto = redirect.protocol;
-var startAddress = proto + '//' + host + '/beginAuthorization'
-var dataPath = '/getData/' + start + '/' + end
+let redirect = url.parse(options.redirectUri);
+let app = express();
+let port = process.env.PORT || redirect.port;
+let host = redirect.host;
+let proto = redirect.protocol;
+let startAddress = proto + '//' + host + '/beginAuthorization'
+let dataPath = '/getData/' + start + '/' + end
 
-var authClient = oura.Auth(options)
-var authUri = authClient.code.getUri()
-var server = app.listen(port, function () {
+let authClient = oura.Auth(options)
+let authUri = authClient.code.getUri()
+let server = app.listen(port, function () {
   console.log('Server running on port ' + port)
   console.log('Start from ' + startAddress)
 });
@@ -64,8 +64,8 @@ app.get(redirect.pathname, function (req, res) {
 
 // get access token, refres if needed,
 app.get('/getData/:start/:end', function (req, res) {
-  var token = authConfig.access_token
-  var client = new oura.Client(token)
+  let token = authConfig.access_token
+  let client = new oura.Client(token)
   client.readiness(req.param.start, req.param.end).then(function (readiness) {
     res.json(readiness)
   })

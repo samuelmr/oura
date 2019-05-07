@@ -21,14 +21,15 @@
   },
   "license": "ISC",
   "dependencies": {
-    "client-oauth2": "^3.2.0",
-    "lodash": "^3.6.0",
-    "request-promise": "^0.4.1"
+    "client-oauth2": "^4.2.3",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
   },
   "devDependencies": {
-    "nock": "^1.5.0",
-    "chai": "^2.2.0",
-    "mocha": "^2.2.4"
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nock": "^10.0.6"
   },
   "bugs": {
     "url": "https://github.com/samuelmr/oura/issues"
