@@ -1,13 +1,14 @@
-require('chai').should()
-var nock = require('nock'),
-  config = require('../config'),
-  Client = require('../lib/client')
+const chai = require('chai')
+const nock = require('nock')
+const config = require('../config')
+const Client = require('../lib/client')
+const should = chai.should()
 
-describe('Sleep ', function () {
+describe('Sleep ', () => {
 
-  it('should get sleep data', function (done) {
+  it('should get sleep data', (done) => {
 
-    var sleepData = {
+    let sleepData = {
       "sleep": {
         "summary_date": "2016-09-03",
         "period_id": 0,
@@ -42,13 +43,13 @@ describe('Sleep ', function () {
         "hr_10min": [ 255, 78, 65, 69, 65, 65, 68, 64, 62, 63, 65, 63, 75, 75, 85, 85, 80, 55, 55, 55, 55, 55, 58, 63, 63, 59, 57, 56, 54, 54, 53, 59, 60, 60, 58, 57, 55, 55, 55, 52, 51, 53, 54, 61, 62, 62, 68, 67, 67, 255, 255, 255, 255, 255, 255, 255 ]
       }
     }
-    var endpoint = defaultNockEndpoint()
+    let endpoint = defaultNockEndpoint()
       .get('/sleep?start=2016-09-03&end=2016-09-04')
       .reply(200, JSON.stringify(sleepData))
 
-    var client = new Client('token')
+    let client = new Client('token')
 
-    client.sleep('2016-09-03', '2016-09-04').then(function (response) {
+    client.sleep('2016-09-03', '2016-09-04').then((response) => {
       should.exist.response
       endpoint.done()
       done()

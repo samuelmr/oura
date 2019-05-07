@@ -1,12 +1,13 @@
-require('chai').should()
-var nock = require('nock'),
-  Client = require('../lib/client')
-config = require('../config')
+const chai = require('chai')
+const nock = require('nock')
+const config = require('../config')
+const Client = require('../lib/client')
+const should = chai.should()
 
-describe('Personal information ', function () {
+describe('Personal information ', () => {
 
-    var client = new Client('token')
-    var userData = {
+    let client = new Client('token')
+    let userData = {
       "age": 27,
       "weight": 80,
       "gender": "male",
@@ -23,9 +24,9 @@ describe('Personal information ', function () {
       done()
     })
 
-    it('should get the user info', function (done) {
+    it('should get the user info', (done) => {
 
-      client.personalInfo().then(function (response) {
+      client.personalInfo().then((response) => {
         should.exist.response
         done()
       })

@@ -1,13 +1,14 @@
-require('chai').should()
-var nock = require('nock'),
-  config = require('../config'),
-  Client = require('../lib/client')
+const chai = require('chai')
+const nock = require('nock')
+const config = require('../config')
+const Client = require('../lib/client')
+const should = chai.should()
 
-describe('Readiness ', function () {
+describe('Readiness ', () => {
 
-  it('should get readiness data', function (done) {
+  it('should get readiness data', (done) => {
 
-    var readinessData = {
+    let readinessData = {
       "readiness": {
         "summary_date": "2016-09-03",
         "period_id": 0,
@@ -21,13 +22,13 @@ describe('Readiness ', function () {
         "score_temperature": 86
       }
     }
-    var endpoint = defaultNockEndpoint()
+    let endpoint = defaultNockEndpoint()
       .get('/readiness?start=2016-09-03&end=2016-09-04')
       .reply(200, JSON.stringify(readinessData))
 
-    var client = new Client('token')
+    let client = new Client('token')
 
-    client.readiness('2016-09-03', '2016-09-04').then(function (response) {
+    client.readiness('2016-09-03', '2016-09-04').then((response) => {
       should.exist.response
       endpoint.done()
       done()
