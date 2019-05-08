@@ -22,7 +22,6 @@
   "license": "ISC",
   "dependencies": {
     "client-oauth2": "^4.2.3",
-    "lodash": "^4.17.11",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
