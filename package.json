@@ -20,6 +20,9 @@
     "url": "git+ssh://git@github.com/samuelmr/oura.git"
   },
   "license": "ISC",
+  "engines": {
+    "node": ">=6.7.0"
+  },
   "dependencies": {
     "client-oauth2": "^4.2.3",
     "request": "^2.88.0",
