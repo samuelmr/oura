@@ -1,6 +1,6 @@
 {
   "name": "oura",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "description": "ŌURA Cloud API client",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "node": ">=6.7.0"
   },
   "dependencies": {
-    "client-oauth2": "^4.2.3",
+    "client-oauth2": "^4.2.5",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
