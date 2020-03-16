@@ -14,34 +14,34 @@ const url = require('url')
 
 // these must match the info at
 // https://api.ouraring.com/oauth/applications
-let options = {
+const options = {
   clientId: 'YOUR_CLIENT_ID',
   clientSecret: 'YOUR_CLIENT_SECRET',
-  redirectUri: 'http://localhost:6872/authcallback'
+  redirectUri: 'https://host.yourdomain.example/authcallback'
 }
 
 // Using a simple global value in this example.
 // Should be stored somewhere permanently!
-let authConfig;
+let authConfig
 
-let dateFormat = 'YYYY-MM-DD'
+const dateFormat = 'YYYY-MM-DD'
 let start = moment().subtract(7, 'days').format(dateFormat)
 let end = moment().format(dateFormat)
 
-let redirect = url.parse(options.redirectUri);
-let app = express();
-let port = process.env.PORT || redirect.port;
-let host = redirect.host;
-let proto = redirect.protocol;
-let startAddress = proto + '//' + host + '/beginAuthorization'
-let dataPath = '/getData/' + start + '/' + end
+const redirect = url.parse(options.redirectUri)
+const app = express()
+const port = process.env.PORT || redirect.port
+const host = redirect.host
+const proto = redirect.protocol
+const startAddress = proto + '//' + host + '/beginAuthorization'
+const dataPath = '/getData/' + start + '/' + end
 
-let authClient = oura.Auth(options)
-let authUri = authClient.code.getUri()
-let server = app.listen(port, function () {
+const authClient = oura.Auth(options)
+const authUri = authClient.code.getUri()
+const server = app.listen(port, function () {
   console.log('Server running on port ' + port)
   console.log('Start from ' + startAddress)
-});
+})
 
 // begin authorization flow
 app.get(url.parse(startAddress).pathname, function (req, res) {
@@ -64,8 +64,8 @@ app.get(redirect.pathname, function (req, res) {
 
 // get access token, refres if needed,
 app.get('/getData/:start/:end', function (req, res) {
-  let token = authConfig.access_token
-  let client = new oura.Client(token)
+  const token = authConfig.access_token
+  const client = new oura.Client(token)
   client.readiness(req.param.start, req.param.end).then(function (readiness) {
     res.json(readiness)
   })
