@@ -1,10 +1,10 @@
 {
   "name": "oura",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "ŌURA Cloud API client",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "ava"
   },
   "keywords": [
     "oura",
@@ -24,14 +24,13 @@
     "node": ">=6.7.0"
   },
   "dependencies": {
+    "bent": "^7.1.1",
     "client-oauth2": "^4.2.5",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "test-listen": "^1.1.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4",
-    "nock": "^10.0.6"
+    "ava": "^3.5.0",
+    "nock": "^12.0.2"
   },
   "bugs": {
     "url": "https://github.com/samuelmr/oura/issues"
