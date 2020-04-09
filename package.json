@@ -24,13 +24,13 @@
     "node": ">=6.7.0"
   },
   "dependencies": {
-    "bent": "^7.1.1",
+    "bent": "^7.1.2",
     "client-oauth2": "^4.2.5",
     "test-listen": "^1.1.0"
   },
   "devDependencies": {
-    "ava": "^3.5.0",
-    "nock": "^12.0.2"
+    "ava": "^3.6.0",
+    "nock": "^12.0.3"
   },
   "bugs": {
     "url": "https://github.com/samuelmr/oura/issues"
