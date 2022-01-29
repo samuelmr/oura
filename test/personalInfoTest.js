@@ -13,7 +13,7 @@ test('user', async t => {
   }
 
   let endpoint = nock(config.baseUrl)
-    .get('/userinfo')
+    .get('/v2/usercollection/personal_info')
     .reply(200, JSON.stringify(userData))
 
   const client = new Client('token')
