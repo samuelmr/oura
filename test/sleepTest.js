@@ -4,51 +4,77 @@ const nock = require('nock')
 const config = require('../config')
 const Client = require('../lib/client')
 
-test('user', async t => {
+test('sleep', async t => {
   let sleepData = {
-		"sleep": {
-			"summary_date": "2016-09-03",
-			"period_id": 0,
-			"is_longest": 1,
-			"bedtime_start": "2016-09-03T23:50:09+03:00",
-			"bedtime_end": "2016-09-04T08:06:09+03:00",
-			"timezone": 180,
-			"duration": 29760,
-			"score": 53,
-			"total": 19950,
-			"awake": 9810,
-			"rem": 7110,
-			"light": 10470,
-			"deep": 2370,
-			"efficiency": 67,
-			"hr_low_duration": 16770,
-			"hr_lowest": 51,
-			"wake_up_count": 2,
-			"onset_latency": 4110,
-			"hr_average": 57.375,
-			"midpoint_time": 10,
-			"restless": 50,
-			"got_up_count": 2,
-			"score_total": 58,
-			"score_deep": 47,
-			"score_rem": 96,
-			"score_efficiency": 41,
-			"score_latency": 17,
-			"score_disturbances": 49,
-			"score_alignment": 56,
-			"hypnogram_5min":"4444444444444433333444444444444422222111111133323322222222222242233322222222222222221333334443333344",
-			"hr_10min": [ 255, 78, 65, 69, 65, 65, 68, 64, 62, 63, 65, 63, 75, 75, 85, 85, 80, 55, 55, 55, 55, 55, 58, 63, 63, 59, 57, 56, 54, 54, 53, 59, 60, 60, 58, 57, 55, 55, 55, 52, 51, 53, 54, 61, 62, 62, 68, 67, 67, 255, 255, 255, 255, 255, 255, 255 ]
-		}
-	}
+    "data": [
+      {
+        "id": "1",
+        "average_breath": 0,
+        "average_heart_rate": 0,
+        "average_hrv": 0,
+        "awake_time": 0,
+        "bedtime_end": "2019-08-24T14:15:22Z",
+        "bedtime_start": "2019-08-24T14:15:22Z",
+        "day": "2019-08-24",
+        "deep_sleep_duration": 0,
+        "efficiency": 0,
+        "heart_rate": {
+          "interval": 0,
+          "items": [
+            0
+          ],
+          "timestamp": "2019-08-24T14:15:22Z"
+        },
+        "hrv": {
+          "interval": 0,
+          "items": [
+            0
+          ],
+          "timestamp": "2019-08-24T14:15:22Z"
+        },
+        "latency": 0,
+        "light_sleep_duration": 0,
+        "low_battery_alert": true,
+        "lowest_heart_rate": 0,
+        "movement_30_sec": "1143222134",
+        "period": 0,
+        "readiness": {
+          "contributors": {
+            "activity_balance": 75,
+            "body_temperature": 89,
+            "hrv_balance": 23,
+            "previous_day_activity": 45,
+            "previous_night": 62,
+            "recovery_index": 17,
+            "resting_heart_rate": 82,
+            "sleep_balance": 46
+          },
+          "score": 67,
+          "temperature_deviation": 2,
+          "temperature_trend_deviation": 1
+        },
+        "readiness_score_delta": 10,
+        "rem_sleep_duration": 0,
+        "restless_periods": 0,
+        "sleep_phase_5_min": "444423323441114",
+        "sleep_score_delta": 0,
+        "sleep_algorithm_version": "v2",
+        "time_in_bed": 0,
+        "total_sleep_duration": 0,
+        "type": "deleted"
+      }
+    ],
+    "next_token": null
+  }
 
   let endpoint = nock(config.baseUrl)
-    .get('/v1/sleep?start=2016-09-03&end=2016-09-04')
+    .get('/v2/usercollection/session?sleep=2019-08-24&end_date=2019-08-25')
     .reply(200, JSON.stringify(sleepData))
 
   const client = new Client('token')
-	const sleep = await client.sleep('2016-09-03', '2016-09-04')
+    const sleep = await client.sleep('2019-08-24', '2019-08-25')
 
-  t.is(sleep.sleep.hr_10min[3], 69)
-  t.is(sleep.sleep.score, 53)
+  t.is(sleep.data[0].bedtime_end, "2019-08-24T14:15:22Z")
+  t.is(sleep.data[0].readiness.score, 67)
 
 })
