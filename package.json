@@ -1,6 +1,6 @@
 {
   "name": "oura",
-  "version": "0.8.1",
+  "version": "2.0.0",
   "description": "ŌURA Cloud API client",
   "main": "index.js",
   "scripts": {
@@ -20,16 +20,13 @@
     "url": "git+ssh://git@github.com/samuelmr/oura.git"
   },
   "license": "ISC",
-  "engines": {
-    "node": ">=6.7.0"
-  },
   "dependencies": {
     "bent": "^7.3.12",
     "client-oauth2": "^4.3.3",
     "test-listen": "^1.1.0"
   },
   "devDependencies": {
-    "ava": "^4.0.1",
+    "ava": "^6.0.1",
     "nock": "^13.1.0"
   },
   "bugs": {
