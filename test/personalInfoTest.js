@@ -17,7 +17,7 @@ test('user', async t => {
     .reply(200, JSON.stringify(userData))
 
   const client = new Client('token')
-	const user = await client.personalInfo()
+  const user = await client.personalInfo()
 
   t.is(user.age, 27)
   t.is(user.gender, "male")
