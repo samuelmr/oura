@@ -68,7 +68,7 @@ test('sleep', async t => {
   }
 
   let endpoint = nock(config.baseUrl)
-    .get('/v2/usercollection/session?sleep=2019-08-24&end_date=2019-08-25')
+    .get('/v2/usercollection/sleep?start_date=2019-08-24&end_date=2019-08-25')
     .reply(200, JSON.stringify(sleepData))
 
   const client = new Client('token')
